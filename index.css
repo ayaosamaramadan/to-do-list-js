@@ -7,11 +7,10 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  position: relative;
 }
 
 .container {
-  background-color: white;
+  background-color: #fff;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -52,7 +51,7 @@ body {
 }
 
 #add-btn {
-  background-color: white;
+  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -82,7 +81,7 @@ body {
 
 #add-btn button {
   background-color: #4CAF50;
-  color: white;
+  color: #fff;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
@@ -119,14 +118,13 @@ body {
 }
 
 .task button {
-  color: white;
+  color: #fff;
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 
 #taskss {
   background-color: #fff;
@@ -156,10 +154,8 @@ body {
   background: #45a049;
 }
 
-
-
 .complete-btn {
-  background-color: #4caf50;
+  background-color: #4CAF50;
 }
 
 .complete-btn:hover {
@@ -182,3 +178,39 @@ body {
   background-color: #434444;
 }
 
+.notif {
+  background-color: rgba(129, 129, 129, 0.664);
+  color: #fff;
+  padding: 10px;
+  padding-right:  20px;
+  padding-left: 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  top:0;
+  margin-top: 10px;
+  position: absolute;
+  display: fixed;
+  text-align: center;
+}
+
+.err{
+  background-color: #f44336;
+  padding:7px;
+  padding-right:  10px;
+  padding-left: 10px;
+  border-radius:  45px;
+  margin-right: 10px;
+}
+
+.suc{
+  background-color: #4CAF50;
+  padding:7px;
+  padding-right:  10px;
+  padding-left: 10px;
+  border-radius:  45px;
+  margin-right: 10px;
+}
+.notif p {
+  margin: 0;
+}
