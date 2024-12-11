@@ -1,3 +1,91 @@
-#a{
-    color: rgb(121, 201, 114);
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+.container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+.title h1 {
+  margin: 0;
+  font-weight: 500;
+  color: #333;
+}
+
+#task-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  position: absolute;
+  margin-top: 4%;
+}
+
+#task-btn:hover {
+  background-color: #45a049;
+}
+
+#task-btn h2 {
+  margin: 0;
+}
+
+#add-btn {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+#add-btn div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#add-btn input[type="text"] {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#add-btn input[type="text"]:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+#add-btn button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#add-btn button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
 }
