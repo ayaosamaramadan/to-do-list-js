@@ -4,7 +4,11 @@ let submitTask = document.getElementById("submit");
 let taskInput = document.getElementById("inputt");
 let body = document.querySelector("body");
 let thetask = document.getElementById("thetask");
+let taskss = document.getElementById("taskss");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+taskss.style.opacity = "0";
+taskss.style.cssText = "visibility:hidden";
 
 addTask.style.opacity = "0";
 openTask.style.cssText = "visibility:visible";
@@ -13,6 +17,8 @@ openTask.addEventListener("click", () => {
   addTask.style.opacity = "1";
   openTask.style.cssText = "visibility:hidden";
 });
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   updatee();
@@ -90,9 +96,21 @@ function updatee() {
     }
     div1.appendChild(ineerdiv);
     thetask.appendChild(div1);
+    opacit();
   });
 }
 
+function opacit(){
+  if (tasks.length > 0) {
+    taskss.style.opacity = "1";
+    taskss.style.cssText = "visibility:visible";
+  
+  }
+  else {
+    taskss.style.opacity = "0";
+    taskss.style.cssText = "visibility:hidden";
+  }
+}
 // delete task
 function deletetask(ind) {
   tasks.splice(ind, 1);
@@ -109,4 +127,6 @@ function deletetask(ind) {
   setTimeout(() => {
     notif.remove();
   }, 2000);
+  opacit();
 }
+
