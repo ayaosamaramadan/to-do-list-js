@@ -16,26 +16,31 @@ body {
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 400px;
+  margin-top: 150px;
   text-align: center;
 }
 
 .title h1 {
   margin: 0;
-  font-weight: 500;
-  color: #333;
+  padding: 10px 0;
+  font-weight: 700;
+  font-size: 2.5em;
+  color: #4CAF50;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 #task-btn {
-  background-color: #4CAF50;
+  background-color: #000;
   color: white;
-  padding: 15px 20px;
+  padding: 10px 15px;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
   position: absolute;
-  margin-top: 4%;
+  top: 20px;
+  left: 20px;
 }
 
 #task-btn:hover {
@@ -89,3 +94,91 @@ body {
   background-color: #45a049;
   transform: scale(1.05);
 }
+
+#thetask {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.task {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.task p {
+  margin: 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.task button {
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+#taskss {
+  background-color: #fff;
+  overflow-y: scroll;
+  height: 240px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+#taskss::-webkit-scrollbar {
+  width: 8px;
+}
+
+#taskss::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+#taskss::-webkit-scrollbar-thumb {
+  background: #4CAF50;
+  border-radius: 10px;
+}
+
+#taskss::-webkit-scrollbar-thumb:hover {
+  background: #45a049;
+}
+
+
+
+.complete-btn {
+  background-color: #4caf50;
+}
+
+.complete-btn:hover {
+  background-color: #246927;
+}
+
+.delete-btn {
+  background-color: #f44336;
+}
+
+.delete-btn:hover {
+  background-color: #af1308;
+}
+
+.edit-btn {
+  background-color: #6f7172;
+}
+
+.edit-btn:hover {
+  background-color: #434444;
+}
+
