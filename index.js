@@ -1,11 +1,18 @@
 let openTask = document.getElementById("task-btn");
 let addTask = document.getElementById("add-btn");
-let submitTask = document.getElementById("submit");
 let taskInput = document.getElementById("inputt");
 let body = document.querySelector("body");
 let thetask = document.getElementById("thetask");
 let taskss = document.getElementById("taskss");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let b = document.getElementById("b");
+let inputt = document.getElementById("inputt");
+let addbtn = document.createElement("button");
+addbtn.setAttribute("id", "submit");
+addbtn.innerHTML = `<i class="fa-solid fa-add"></i>`;
+b.appendChild(addbtn);
+let addsubmitTask = document.getElementById("submit");
+
 
 taskss.style.opacity = "0";
 taskss.style.cssText = "visibility:hidden";
@@ -18,14 +25,12 @@ openTask.addEventListener("click", () => {
   openTask.style.cssText = "visibility:hidden";
 });
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
   updatee();
 });
 
 // add task
-submitTask.addEventListener("click", () => {
+addsubmitTask.addEventListener("click", () => {
   //error in add task notification
   if (taskInput.value === "") {
     let notif = document.createElement("div");
@@ -64,7 +69,9 @@ function updatee() {
   tasks.forEach((task, ind) => {
     let div1 = document.createElement("div");
     let h44 = document.createElement("h4");
+    h44.setAttribute("class", "task-number");
     let pp = document.createElement("p");
+    pp.setAttribute("class", `task-text ${ind}`);
     let ineerdiv = document.createElement("div");
     ineerdiv.setAttribute("class", "task-actions");
     div1.setAttribute("class", `task`);
@@ -85,6 +92,7 @@ function updatee() {
       if (i === 1) {
         editbtn.innerHTML = `<i class="fa-solid fa-edit"></i>`;
         editbtn.setAttribute("class", `edit-btn`);
+        editbtn.addEventListener("click", () => editask(ind));
         ineerdiv.appendChild(editbtn);
       }
       if (i === 2) {
@@ -100,13 +108,11 @@ function updatee() {
   });
 }
 
-function opacit(){
+function opacit() {
   if (tasks.length > 0) {
     taskss.style.opacity = "1";
     taskss.style.cssText = "visibility:visible";
-  
-  }
-  else {
+  } else {
     taskss.style.opacity = "0";
     taskss.style.cssText = "visibility:hidden";
   }
@@ -130,3 +136,38 @@ function deletetask(ind) {
   opacit();
 }
 
+let editbtn = document.createElement("button");
+editbtn.setAttribute("id", "submitt");
+
+
+function editask(ind) {
+  taskInput.value = tasks[ind];
+  current= taskInput.value;
+  editbtn.innerHTML = `<i class="fa-solid fa-edit"></i>`;
+  b.replaceChild(editbtn, addbtn);
+
+  addTask.style.opacity = "1";
+  openTask.style.cssText = "visibility:hidden";
+}
+
+
+editbtn.addEventListener("click", () => {
+  if (currentEditIndex !== null) {
+    tasks[currentEditIndex] = taskInput.value;
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    updatee();
+    taskInput.value = "";
+    b.replaceChild(submitTask, editbtn);
+    currentEditIndex = null;
+    let notif = document.createElement("div");
+    notif.setAttribute("class", "notif");
+    let p = document.createElement("p");
+    p.setAttribute("class", "notif-p");
+    p.innerHTML = `<i class="fa-solid fa-check suc"></i> Task edited successfully`;
+    notif.appendChild(p);
+    body.appendChild(notif);
+    setTimeout(() => {
+      notif.remove();
+    }, 2000);
+  }
+});

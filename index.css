@@ -50,6 +50,18 @@ body {
   margin: 0;
 }
 
+.task-number{
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+.task-text{
+  
+  color: rgb(0, 0, 0);
+}
 #add-btn {
   background-color: #fff;
   padding: 20px;
@@ -130,6 +142,7 @@ body {
   background-color: #fff;
   overflow-y: scroll;
   height: 240px;
+  max-width: 100%;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -146,7 +159,7 @@ body {
 }
 
 #taskss::-webkit-scrollbar-thumb {
-  background: #4CAF50;
+  background: #4caf4f8e;
   border-radius: 10px;
 }
 
@@ -191,7 +204,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 1rem;
   top:0;
-  margin-top: 10px;
+  margin-top: 20px;
   position: absolute;
   display: fixed;
   text-align: center;
