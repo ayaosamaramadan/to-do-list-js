@@ -7,13 +7,13 @@ let taskss = document.getElementById("taskss");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let b = document.getElementById("b");
 let inputt = document.getElementById("inputt");
+
 let addbtn = document.createElement("button");
 addbtn.setAttribute("id", "submit");
 addbtn.innerHTML = `<i class="fa-solid fa-add"></i>`;
 b.appendChild(addbtn);
 let addsubmitTask = document.getElementById("submit");
-
-
+let currentEditIndex = null;
 taskss.style.opacity = "0";
 taskss.style.cssText = "visibility:hidden";
 
@@ -79,6 +79,7 @@ function updatee() {
     h44.innerHTML = ind + 1;
     div1.appendChild(h44);
     pp.innerHTML = task;
+    current = pp.innerHTML;
     div1.appendChild(pp);
     for (let i = 0; i < 3; i++) {
       let delbtn = document.createElement("button");
@@ -142,7 +143,8 @@ editbtn.setAttribute("id", "submitt");
 
 function editask(ind) {
   taskInput.value = tasks[ind];
-  current= taskInput.value;
+  currentEditIndex = ind;
+  console.log(current);
   editbtn.innerHTML = `<i class="fa-solid fa-edit"></i>`;
   b.replaceChild(editbtn, addbtn);
 
@@ -152,13 +154,14 @@ function editask(ind) {
 
 
 editbtn.addEventListener("click", () => {
-  if (currentEditIndex !== null) {
-    tasks[currentEditIndex] = taskInput.value;
+  let task = taskInput.value;
+  tasks[currentEditIndex] = task;
     localStorage.setItem("tasks", JSON.stringify(tasks));
     updatee();
     taskInput.value = "";
-    b.replaceChild(submitTask, editbtn);
+    b.replaceChild(addbtn, editbtn);
     currentEditIndex = null;
+    //edit task notification
     let notif = document.createElement("div");
     notif.setAttribute("class", "notif");
     let p = document.createElement("p");
@@ -169,5 +172,5 @@ editbtn.addEventListener("click", () => {
     setTimeout(() => {
       notif.remove();
     }, 2000);
-  }
+  
 });
