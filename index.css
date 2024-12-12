@@ -113,6 +113,7 @@ body {
 
 .task {
   background-color: #fff;
+  /* background-color: #4dff6b65; */
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -229,4 +230,11 @@ body {
 }
 .notif p {
   margin: 0;
+}
+
+
+
+.cancle-completebtn{
+  background-color: #f44336;
+  margin-right: 5px;
 }

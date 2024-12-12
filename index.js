@@ -5,6 +5,7 @@ let body = document.querySelector("body");
 let thetask = document.getElementById("thetask");
 let taskss = document.getElementById("taskss");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || [];
 let b = document.getElementById("b");
 let inputt = document.getElementById("inputt");
 
@@ -47,7 +48,9 @@ addsubmitTask.addEventListener("click", () => {
   }
   let task = taskInput.value;
   tasks.push(task);
+  completedTasks.push(false);
   localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   updatee();
   taskInput.value = "";
   //add task notification
@@ -63,6 +66,7 @@ addsubmitTask.addEventListener("click", () => {
   }, 2000);
 });
 
+let complete;
 // update task
 function updatee() {
   thetask.innerHTML = "";
@@ -76,6 +80,7 @@ function updatee() {
     ineerdiv.setAttribute("class", "task-actions");
     div1.setAttribute("class", `task`);
     div1.setAttribute("id", `${ind}`);
+    complete=document.getElementById(`${ind}`);
     h44.innerHTML = ind + 1;
     div1.appendChild(h44);
     pp.innerHTML = task;
@@ -88,6 +93,25 @@ function updatee() {
       if (i === 0) {
         compbtn.innerHTML = `<i class="fa-solid fa-check"></i>`;
         compbtn.setAttribute("class", `complete-btn`);
+        if (completedTasks[ind]) {
+          div1.style.backgroundColor = "#4dff6b65";
+          compbtn.innerHTML = `<i class="fa-solid fa-x"></i>`;
+          compbtn.setAttribute("class", `cancle-completebtn`);
+        }
+        compbtn.addEventListener("click", () => {
+          if(compbtn.innerHTML === `<i class="fa-solid fa-check"></i>`){
+          div1.style.backgroundColor = "#4dff6b65";
+          compbtn.innerHTML = `<i class="fa-solid fa-x"></i>`;
+          compbtn.setAttribute("class", `cancle-completebtn`);
+          completedTasks[ind] = true;
+          }else{
+            div1.style.backgroundColor = "#fff";
+            compbtn.innerHTML = `<i class="fa-solid fa-check"></i>`;
+            compbtn.setAttribute("class", `complete-btn`);
+            completedTasks[ind] = false;
+          }
+          localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+        });
         ineerdiv.appendChild(compbtn);
       }
       if (i === 1) {
@@ -118,10 +142,13 @@ function opacit() {
     taskss.style.cssText = "visibility:hidden";
   }
 }
+
 // delete task
 function deletetask(ind) {
   tasks.splice(ind, 1);
+  completedTasks.splice(ind, 1);
   localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   updatee();
   //delete task notification
   let notif = document.createElement("div");
@@ -157,6 +184,7 @@ editbtn.addEventListener("click", () => {
   let task = taskInput.value;
   tasks[currentEditIndex] = task;
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
     updatee();
     taskInput.value = "";
     b.replaceChild(addbtn, editbtn);
