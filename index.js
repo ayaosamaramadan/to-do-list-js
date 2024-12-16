@@ -72,6 +72,7 @@ function updatee() {
   thetask.innerHTML = "";
   tasks.forEach((task, ind) => {
     let div1 = document.createElement("div");
+    // div1.classList.add("add");
     let h44 = document.createElement("h4");
     h44.setAttribute("class", "task-number");
     let pp = document.createElement("p");
@@ -123,13 +124,16 @@ function updatee() {
       if (i === 2) {
         delbtn.innerHTML = `<i class="fa-solid fa-trash"></i>`;
         delbtn.setAttribute("class", `delete-btn `);
-        delbtn.addEventListener("click", () => deletetask(ind));
+        delbtn.addEventListener("click", () => deletetask(ind, div1));
         ineerdiv.appendChild(delbtn);
       }
     }
     div1.appendChild(ineerdiv);
+    
     thetask.appendChild(div1);
+
     opacit();
+    
   });
 }
 
@@ -144,7 +148,10 @@ function opacit() {
 }
 
 // delete task
-function deletetask(ind) {
+function deletetask(ind, taskElement) {
+  // animation
+  taskElement.classList.add("remove");
+  setTimeout(() => {
   tasks.splice(ind, 1);
   completedTasks.splice(ind, 1);
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -161,6 +168,7 @@ function deletetask(ind) {
   setTimeout(() => {
     notif.remove();
   }, 2000);
+}, 300);
   opacit();
 }
 
@@ -202,3 +210,5 @@ editbtn.addEventListener("click", () => {
     }, 2000);
   
 });
+
+
