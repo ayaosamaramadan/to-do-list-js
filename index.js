@@ -30,19 +30,33 @@ document.addEventListener("DOMContentLoaded", () => {
   updatee();
 });
 
+function opacit() {
+  if (tasks.length > 0) {
+    taskss.style.opacity = "1";
+    taskss.style.cssText = "visibility:visible";
+  } else {
+    taskss.style.opacity = "0";
+    taskss.style.cssText = "visibility:hidden";
+  }
+}
+
 // add task
 addsubmitTask.addEventListener("click", () => {
   //error in add task notification
   if (taskInput.value === "") {
     let notif = document.createElement("div");
-    notif.setAttribute("class", "notif");
+    notif.setAttribute("class", "notif show");
     let p = document.createElement("p");
     p.setAttribute("class", "notif-p");
     p.innerHTML = `<i class="fa-solid fa-x err"></i> Please enter a task`;
     notif.appendChild(p);
     body.appendChild(notif);
-    setInterval(() => {
-      notif.remove();
+    setTimeout(() => {
+      notif.classList.remove("show");
+      notif.classList.add("hide");
+      setTimeout(() => {
+        notif.remove();
+      }, 300);
     }, 2000);
     return;
   }
@@ -55,15 +69,20 @@ addsubmitTask.addEventListener("click", () => {
   taskInput.value = "";
   //add task notification
   let notif = document.createElement("div");
-  notif.setAttribute("class", "notif");
+  notif.setAttribute("class", "notif show");
+
   let p = document.createElement("p");
   p.setAttribute("class", "notif-p");
   p.innerHTML = `<i class="fa-solid fa-check suc"></i> Task added successfully`;
   notif.appendChild(p);
   body.appendChild(notif);
-  setInterval(() => {
-    notif.remove();
-  }, 2000);
+  setTimeout(() => {
+    notif.classList.remove("show");
+    notif.classList.add("hide");
+    setTimeout(() => {
+      notif.remove();
+    }, 300);
+  }, 3000);
 });
 
 let complete;
@@ -72,13 +91,14 @@ function updatee() {
   thetask.innerHTML = "";
   tasks.forEach((task, ind) => {
     let div1 = document.createElement("div");
-    // div1.classList.add("add");
+    div1.className = "task add";
     let h44 = document.createElement("h4");
     h44.setAttribute("class", "task-number");
     let pp = document.createElement("p");
     pp.setAttribute("class", `task-text ${ind}`);
     let ineerdiv = document.createElement("div");
     ineerdiv.setAttribute("class", "task-actions");
+    div1.setAttribute("class", `task add`);
     div1.setAttribute("class", `task`);
     div1.setAttribute("id", `${ind}`);
     complete=document.getElementById(`${ind}`);
@@ -133,18 +153,13 @@ function updatee() {
     thetask.appendChild(div1);
 
     opacit();
+
+    setTimeout(() => {
+      div1.classList.remove("add");
+    }
+    , 300);
     
   });
-}
-
-function opacit() {
-  if (tasks.length > 0) {
-    taskss.style.opacity = "1";
-    taskss.style.cssText = "visibility:visible";
-  } else {
-    taskss.style.opacity = "0";
-    taskss.style.cssText = "visibility:hidden";
-  }
 }
 
 // delete task
@@ -159,22 +174,26 @@ function deletetask(ind, taskElement) {
   updatee();
   //delete task notification
   let notif = document.createElement("div");
-  notif.setAttribute("class", "notif");
+  notif.setAttribute("class", "notif show");
   let p = document.createElement("p");
   p.setAttribute("class", "notif-p");
   p.innerHTML = `<i class="fa-solid fa-check suc"></i> Task deleted successfully`;
   notif.appendChild(p);
   body.appendChild(notif);
+  opacit();
   setTimeout(() => {
-    notif.remove();
+    notif.classList.remove("show");
+    notif.classList.add("hide");
+    setTimeout(() => {
+      notif.remove();
+    }, 300);
   }, 2000);
 }, 300);
-  opacit();
+
 }
 
 let editbtn = document.createElement("button");
 editbtn.setAttribute("id", "submitt");
-
 
 function editask(ind) {
   taskInput.value = tasks[ind];
@@ -187,7 +206,6 @@ function editask(ind) {
   openTask.style.cssText = "visibility:hidden";
 }
 
-
 editbtn.addEventListener("click", () => {
   let task = taskInput.value;
   tasks[currentEditIndex] = task;
@@ -199,16 +217,17 @@ editbtn.addEventListener("click", () => {
     currentEditIndex = null;
     //edit task notification
     let notif = document.createElement("div");
-    notif.setAttribute("class", "notif");
+    notif.setAttribute("class", "notif show");
     let p = document.createElement("p");
     p.setAttribute("class", "notif-p");
     p.innerHTML = `<i class="fa-solid fa-check suc"></i> Task edited successfully`;
     notif.appendChild(p);
     body.appendChild(notif);
     setTimeout(() => {
-      notif.remove();
+      notif.classList.remove("show");
+      notif.classList.add("hide");
+      setTimeout(() => {
+        notif.remove();
+      }, 300);
     }, 2000);
-  
 });
-
-
