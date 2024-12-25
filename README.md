@@ -14,7 +14,7 @@ Task Management App using HTML, CSS, and JavaScript to create an interactive and
 ## 🌐 Live Demo
 
 <p>
-  You can view the live project <a href="https://ayaosamaramadan.github.io/js-to-do-list/">here</a>.
+  You can view the live project <a href="https://ayaosamaramadan.github.io/to-do-list-js/">here</a>.
 </p>
 
 ## 🎥 Demo Video
